@@ -10,6 +10,7 @@ angular.module('cgPrompt').factory('prompt',['$modal','$q',function($modal,$q){
             input: false,
             label: '',
             value: '',
+            type: 'text',
             values: false,
             buttons: [
                 {label:'Cancel',cancel:true},
