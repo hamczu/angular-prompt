@@ -74,6 +74,11 @@ function MyCtrl($scope, prompt) {
  Default: `''`  
  The label for the input if `input=true`.
 
+  - #### options.type
+ Type: `String`  
+ Default: `'text'`  
+ The type of the input if `input=true`.
+
  - #### options.value
  Type: `String`  
  Default: `''`  
