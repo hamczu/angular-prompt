@@ -7,15 +7,19 @@ angular.module('cgPrompt').factory('prompt',['$modal','$q',function($modal,$q){
         var defaults = {
             title: '',
             message: '',
+            html: false,
             input: false,
             label: '',
             value: '',
             type: 'text',
             values: false,
-            buttons: [
-                {label:'Cancel',cancel:true},
-                {label:'OK',primary:true}
-            ]
+            buttons: [{
+                label: 'Cancel',
+                cancel: true
+            },{
+                label: 'OK',
+                primary: true
+            }]
         };
 
         if (options === undefined){
@@ -31,10 +35,10 @@ angular.module('cgPrompt').factory('prompt',['$modal','$q',function($modal,$q){
         var defer = $q.defer();
 
         $modal.open({
-            templateUrl:'angular-prompt.html',
+            templateUrl: 'angular-prompt.html',
             controller: 'cgPromptCtrl',
             resolve: {
-                options:function(){ 
+                options: function(){ 
                     return options; 
                 }
             }
@@ -66,11 +70,16 @@ angular.module('cgPrompt').controller('cgPromptCtrl',['$scope','options','$timeo
             $scope.$dismiss();
             return;
         }
+
         if (options.input && angular.element(document.querySelector('#cgPromptForm')).scope().cgPromptForm.$invalid){
             $scope.changed = true;
             return;
         }
-        $scope.$close({button:button,input:$scope.input.name});
+
+        $scope.$close({
+            button: button,
+            input: $scope.input.name
+        });
     };
 
     $scope.submit = function(){
